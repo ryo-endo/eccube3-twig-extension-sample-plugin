@@ -1,4 +1,5 @@
 <?php
+
 namespace Plugin\TwigExtensionSample\ServiceProvider;
 
 use Silex\Application as BaseApplication;
@@ -13,6 +14,11 @@ class TwigExtensionSampleServiceProvider implements ServiceProviderInterface
                 return 'Hello.';
             }));
 
+            // 商品を取得するTwig拡張関数
+            $twig->addFunction(new \Twig_SimpleFunction('TwigExtensionSample_getProduct', function ($id) use ($app) {
+                return $app['eccube.repository.product']->get($id);
+            }));
+
             return $twig;
         }));
     }
@@ -20,5 +26,4 @@ class TwigExtensionSampleServiceProvider implements ServiceProviderInterface
     public function boot(BaseApplication $app)
     {
     }
-
 }

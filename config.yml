@@ -1,0 +1,5 @@
+name: TwigExtensionサンプル
+code: TwigExtensionSample
+version: 1.0.0
+service:
+    - TwigExtensionSampleServiceProvider
